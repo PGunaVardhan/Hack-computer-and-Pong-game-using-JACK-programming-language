@@ -1,0 +1,14 @@
+class Main{
+    function void main(){
+        var Game game;
+        do Screen.clearScreen();
+        
+        let game = Game.new();
+        do game.start();
+        do game.setMode();
+        do game.play();
+
+        do game.dispose();
+        return;
+    }
+}

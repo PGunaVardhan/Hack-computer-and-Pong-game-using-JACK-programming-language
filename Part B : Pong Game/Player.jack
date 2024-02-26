@@ -1,0 +1,139 @@
+class Player{
+    field int x, y; 
+    field int length, height, design;
+    constructor Player new(int _x, int _y, int _length, int playerDesign){
+        let x = _x;
+        let y = _y;
+        let length = _length;
+        let height = 8;
+        let design = playerDesign;
+        return this;
+    } 
+    method int getY(){return y;}
+    method int getX(){return x;}
+    method int getLength(){return length;}
+    method int getHeight(){return height;}
+    method void move(int dx){ // to present
+        if((x + dx) < 0){
+            return;
+        }else{
+            if(((x+length) + dx) > 511){
+                return;
+            }else{}
+        }
+        if(design = 1){
+            if(dx > 0){
+                do Screen.setColor(false);
+                do Screen.drawRectangle(x, y, (x + dx), (y + height));
+                do Screen.setColor(true);
+                do Screen.drawRectangle((x + length), y, (x + length + dx), (y + height));
+            }else{
+                if(dx < 0){
+                    do Screen.setColor(false);
+                    do Screen.drawRectangle((x + length + dx), y, (x + length), (y + height));
+                    do Screen.setColor(true);
+                    do Screen.drawRectangle((x+dx), y, x, (y + height));
+                }else{}
+            }
+        }else{
+            if(design = 2){
+                if(dx > 0){
+                    do Screen.setColor(false);
+                    do Screen.drawRectangle(x, y, (x + dx), y + 1);
+                    do Screen.drawRectangle(x, (y + height -1), (x + dx), (y + height));
+                    do Screen.drawLine(x,(y+ 4),(x + dx), (y+ 4));
+                    do Screen.setColor(true);
+                    do Screen.drawRectangle((x + length), y, (x + length + dx), (y+1));
+                    do Screen.drawRectangle((x + length), (y + height - 1), (x + length + dx), (y + height));
+                    do Screen.drawLine((x+length), (y+ 4), (x+length + dx), (y+4));
+                }else{
+                    if(dx < 0){
+                        do Screen.setColor(false);
+                        do Screen.drawRectangle((x+length + dx), y, (x+length), (y+1));
+                        do Screen.drawRectangle((x+length + dx), (y+height - 1), (x + length), (y + height));
+                        do Screen.drawLine((x + length), (y + 4), (x + length + dx), (y+4));
+                        do Screen.setColor(true);
+                        do Screen.drawRectangle((x + dx), y, x, y+1);
+                        do Screen.drawRectangle((x + dx), (y + height - 1), x, (y + height));
+                        do Screen.drawLine((x+ dx), (y+4), x, (y+4));
+                    }else{}
+                }
+            }else{
+                if(design = 3){
+                    if(dx > 0){
+                        do Screen.setColor(false);
+                        do Screen.drawRectangle(x,y, (x + dx), (y + height));
+                        do Screen.drawRectangle((x + length - 10), (y + 3), (x + length - 10 + dx), (y + height));
+                        do Screen.setColor(true);
+                        do Screen.drawRectangle((x + 10), y, (x + 10 + dx), (y + height));
+                        do Screen.drawRectangle((x + length), y, (x + length + dx), (y + height));
+
+                    }else{
+                        if(dx < 0){
+                            do Screen.setColor(false);
+                            do Screen.drawRectangle((x + length + dx), y, (x + length), (y + height));
+                            do Screen.drawRectangle((x + 10 + dx), (y + 3), (x + 10), (y + height));
+                            do Screen.setColor(true);
+                            do Screen.drawRectangle((x + dx), y, x, (y + height));
+                            do Screen.drawRectangle((x + length - 10 + dx), y, (x + length - 10), (y + height));
+
+                        }else{}
+                    }
+                }else{
+                    if(design = 4){
+                        if(dx > 0){
+                            do Screen.setColor(false);
+                            do Screen.drawRectangle(x,y, (x + dx), (y + height));
+                            do Screen.drawRectangle((x + length - 10), y, (x + length - 10 + dx), (y + 5));
+                            do Screen.setColor(true);
+                            do Screen.drawRectangle((x + 10), y, (x + 10 + dx), (y + height));
+                            do Screen.drawRectangle((x + length), y, (x + length + dx), (y + height));
+
+                        }else{
+                            if(dx < 0){
+                                do Screen.setColor(false);
+                                do Screen.drawRectangle((x + length + dx), y, (x + length), (y + height));
+                                do Screen.drawRectangle((x + 10 + dx), y, (x + 10), (y + 5));
+                                do Screen.setColor(true);
+                                do Screen.drawRectangle((x + dx), y, x, (y + height));
+                                do Screen.drawRectangle((x + length - 10 + dx), y, (x + length - 10), (y + height));
+
+                            }else{}
+                        }
+                    }
+                }
+            }
+        }
+        
+        let x = x + dx;
+        return;   
+    }
+    method void draw(){ // to present
+        do Screen.setColor(false);
+        if(design = 1){
+            do Screen.drawRectangle(x, y, (x+length), (y+height));
+        }else{
+            if(design = 2){
+                do Screen.drawRectangle(x,y,(x+length), (y + 1));
+                do Screen.drawRectangle(x, (y + height - 1), (x+length), (y+height));
+                do Screen.drawLine(x, (y + 4), (x + length), (y+4));
+            }else{
+                if(design = 3){
+                    do Screen.drawRectangle(x, y, (x + 10), (y + height));
+                    do Screen.drawRectangle((x + length - 10), y, (x + length), (y + height));
+                    do Screen.drawRectangle(x,y,(x + length), (y + 2));
+                }else{
+                    do Screen.drawRectangle(x, y, (x + 10), (y + height));
+                    do Screen.drawRectangle((x + length - 10), y, (x + length), (y + height));
+                    do Screen.drawRectangle(x,(y + 6),(x + length), (y + height));
+                }
+            }
+        }
+        
+        return;
+    }
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
